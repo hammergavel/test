@@ -6,7 +6,7 @@ import { Provider, useSelector } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
 export default function App({ Component, pageProps }) {
-  const admin = true;
+  const admin = false;
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
