@@ -84,7 +84,7 @@ export default async function handler(req, res) {
       }
     }
   }
-}}
+}
 
 /**
  * The client will send the phone number to the backend
