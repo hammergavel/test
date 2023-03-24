@@ -1,7 +1,9 @@
 import cors from 'cors';
 
-const corsMiddleware = cors({
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-});
+const corsMiddleware = async (req, res, next) => {
+  await cors({
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  })(req, res, next);
+};
 
 export default corsMiddleware;
