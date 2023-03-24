@@ -5,7 +5,15 @@ import profileSchema from "@/models/profileSchema";
 import corsMiddleware from '../../middleware/cors';
 
 export default async function handler(req, res) {
-  corsMiddleware(req, res, () => {
+  await new Promise((resolve, reject) => {
+    corsMiddleware(req, res, (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
     const { method } = req;
   const { contact, password } = req.body;
 
@@ -43,4 +51,4 @@ export default async function handler(req, res) {
       console.log(e);
     }
   }
-}}
+}
