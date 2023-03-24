@@ -2,9 +2,11 @@ import dbConnect from "@/util/mongo.js";
 import userAuthModel from "@/models/authSchema";
 import bcrypt from "bcrypt";
 import profileSchema from "@/models/profileSchema";
+import corsMiddleware from '../../middleware/cors';
 
 export default async function handler(req, res) {
-  const { method } = req;
+  corsMiddleware(req, res, () => {
+    const { method } = req;
   const { contact, password } = req.body;
 
   console.log(method);
@@ -41,4 +43,4 @@ export default async function handler(req, res) {
       console.log(e);
     }
   }
-}
+}}

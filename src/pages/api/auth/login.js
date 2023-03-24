@@ -2,8 +2,10 @@
 import dbConnect from "@/util/mongo.js";
 import userAuthModel from "@/models/authSchema";
 import bcrypt from "bcrypt";
+import corsMiddleware from '../../middleware/cors';
 
 export default async function handler(req, res) {
+  corsMiddleware(req, res, () => {
   const { method } = req;
   const { contact, signinwithphone, password, otpverified, emailExists } =
     req.body;
@@ -74,7 +76,7 @@ export default async function handler(req, res) {
       }
     }
   }
-}
+}}
 
 /**
  * The client will send the phone number to the backend
